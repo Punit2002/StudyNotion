@@ -16,6 +16,10 @@ const dotenv = require("dotenv");
 // Setting up port number
 const PORT = process.env.PORT || 4000;
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2fde0a7 (Second commit)
 // Loading environment variables from .env file
 dotenv.config();
 
@@ -27,7 +31,12 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(
 	cors({
+<<<<<<< HEAD
 		origin: "*",
+=======
+
+		origin:"http://localhost:3000",
+>>>>>>> 2fde0a7 (Second commit)
 		credentials: true,
 	})
 );

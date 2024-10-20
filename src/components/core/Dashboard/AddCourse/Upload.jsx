@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { useEffect, useRef, useState } from "react"
 import { useDropzone } from "react-dropzone"
 import { FiUploadCloud } from "react-icons/fi"
@@ -5,6 +6,14 @@ import { useSelector } from "react-redux"
 
 import "video-react/dist/video-react.css"
 import { Player } from "video-react"
+=======
+import { useEffect, useRef, useState } from "react";
+import { useDropzone } from "react-dropzone";
+import { FiUploadCloud } from "react-icons/fi";
+import { useSelector } from "react-redux";
+import "video-react/dist/video-react.css";
+import { Player } from "video-react";
+>>>>>>> 2fde0a7 (Second commit)
 
 export default function Upload({
   name,
@@ -16,6 +25,7 @@ export default function Upload({
   viewData = null,
   editData = null,
 }) {
+<<<<<<< HEAD
   const { course } = useSelector((state) => state.course)
   const [selectedFile, setSelectedFile] = useState(null)
   const [previewSource, setPreviewSource] = useState(
@@ -30,12 +40,34 @@ export default function Upload({
       setSelectedFile(file)
     }
   }
+=======
+  const { course } = useSelector((state) => state.course);
+  const [selectedFile, setSelectedFile] = useState(null);
+  const [previewSource, setPreviewSource] = useState(
+    viewData ? viewData : editData ? editData : ""
+  );
+  const fileInputRef = useRef(null);
+
+  // Manually trigger file input click
+  const handleClick = () => {
+    fileInputRef.current.click();
+  };
+
+  const onDrop = (acceptedFiles) => {
+    const file = acceptedFiles[0];
+    if (file) {
+      previewFile(file);
+      setSelectedFile(file);
+    }
+  };
+>>>>>>> 2fde0a7 (Second commit)
 
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
     accept: !video
       ? { "image/*": [".jpeg", ".jpg", ".png"] }
       : { "video/*": [".mp4"] },
     onDrop,
+<<<<<<< HEAD
   })
 
   const previewFile = (file) => {
@@ -56,6 +88,25 @@ export default function Upload({
     setValue(name, selectedFile)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedFile, setValue])
+=======
+  });
+
+  const previewFile = (file) => {
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onloadend = () => {
+      setPreviewSource(reader.result);
+    };
+  };
+
+  useEffect(() => {
+    register(name, { required: true });
+  }, [register]);
+
+  useEffect(() => {
+    setValue(name, selectedFile);
+  }, [selectedFile, setValue, name]);
+>>>>>>> 2fde0a7 (Second commit)
 
   return (
     <div className="flex flex-col space-y-2">
@@ -66,7 +117,17 @@ export default function Upload({
         className={`${
           isDragActive ? "bg-richblack-600" : "bg-richblack-700"
         } flex min-h-[250px] cursor-pointer items-center justify-center rounded-md border-2 border-dotted border-richblack-500`}
+<<<<<<< HEAD
       >
+=======
+        {...getRootProps()} // Apply getRootProps to the container div
+      >
+        <input
+          {...getInputProps()}
+          ref={fileInputRef}
+          style={{ display: "none" }} // Ensure input is hidden but functional
+        />
+>>>>>>> 2fde0a7 (Second commit)
         {previewSource ? (
           <div className="flex w-full flex-col p-6">
             {!video ? (
@@ -82,9 +143,15 @@ export default function Upload({
               <button
                 type="button"
                 onClick={() => {
+<<<<<<< HEAD
                   setPreviewSource("")
                   setSelectedFile(null)
                   setValue(name, null)
+=======
+                  setPreviewSource("");
+                  setSelectedFile(null);
+                  setValue(name, null);
+>>>>>>> 2fde0a7 (Second commit)
                 }}
                 className="mt-3 text-richblack-400 underline"
               >
@@ -95,9 +162,14 @@ export default function Upload({
         ) : (
           <div
             className="flex w-full flex-col items-center p-6"
+<<<<<<< HEAD
             {...getRootProps()}
           >
             <input {...getInputProps()} ref={inputRef} />
+=======
+            onClick={handleClick} // Manually trigger file selection on click
+          >
+>>>>>>> 2fde0a7 (Second commit)
             <div className="grid aspect-square w-14 place-items-center rounded-full bg-pure-greys-800">
               <FiUploadCloud className="text-2xl text-yellow-50" />
             </div>
@@ -119,5 +191,9 @@ export default function Upload({
         </span>
       )}
     </div>
+<<<<<<< HEAD
   )
+=======
+  );
+>>>>>>> 2fde0a7 (Second commit)
 }

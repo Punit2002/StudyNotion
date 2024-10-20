@@ -226,17 +226,28 @@ export default function CourseInformationForm() {
           Course Category <sup className="text-pink-200">*</sup>
         </label>
         <select
+<<<<<<< HEAD
           {...register("courseCategory", { required: true })}
           defaultValue=""
           id="courseCategory"
+=======
+          id="courseCategory"
+          defaultValue=""
+          {...register("courseCategory", { required: true })}
+>>>>>>> 2fde0a7 (Second commit)
           className="form-style w-full"
         >
           <option value="" disabled>
             Choose a Category
           </option>
           {!loading &&
+<<<<<<< HEAD
             courseCategories?.map((category, indx) => (
               <option key={indx} value={category?._id}>
+=======
+            courseCategories?.map((category, index) => (
+              <option key={index} value={category?._id}>
+>>>>>>> 2fde0a7 (Second commit)
                 {category?.name}
               </option>
             ))}

@@ -11,6 +11,7 @@ import { categories } from "../../services/apis"
 import { ACCOUNT_TYPE } from "../../utils/constants"
 import ProfileDropdown from "../core/Auth/ProfileDropdown"
 
+<<<<<<< HEAD
 // const subLinks = [
 //   {
 //     title: "Python",
@@ -29,6 +30,26 @@ import ProfileDropdown from "../core/Auth/ProfileDropdown"
 //     link: "/catalog/Android Development",
 //   },
 // ];
+=======
+const DummysubLinks = [
+  {
+    title: "Python",
+    link: "/catalog/python",
+  },
+  {
+    title: "javascript",
+    link: "/catalog/javascript",
+  },
+  {
+    title: "web-development",
+    link: "/catalog/web-development",
+  },
+  {
+    title: "Android Development",
+    link: "/catalog/Android Development",
+  },
+];
+>>>>>>> 2fde0a7 (Second commit)
 
 function Navbar() {
   const { token } = useSelector((state) => state.auth)
@@ -52,7 +73,11 @@ function Navbar() {
     })()
   }, [])
 
+<<<<<<< HEAD
   // console.log("sub links", subLinks)
+=======
+   console.log("subbbbbbbbbbbbbbbbbbbbb links", subLinks)
+>>>>>>> 2fde0a7 (Second commit)
 
   const matchRoute = (route) => {
     return matchPath({ path: route }, location.pathname)
@@ -89,12 +114,19 @@ function Navbar() {
                         <div className="absolute left-[50%] top-0 -z-10 h-6 w-6 translate-x-[80%] translate-y-[-40%] rotate-45 select-none rounded bg-richblack-5"></div>
                         {loading ? (
                           <p className="text-center">Loading...</p>
+<<<<<<< HEAD
                         ) : subLinks? (
                           <>
                             {subLinks
                               ?.filter(
                                 (subLink) => subLink?.courses?.length > 0
                               )
+=======
+                        ) : subLinks.length ? (
+                          <>
+                            {subLinks
+                              
+>>>>>>> 2fde0a7 (Second commit)
                               ?.map((subLink, i) => (
                                 <Link
                                   to={`/catalog/${subLink.name
